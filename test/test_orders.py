@@ -1,12 +1,9 @@
-from selenium import webdriver
 import random
 
-from PageObjects import OrderPage
+from locators import OrderPage
 
 
 class TestCreateOrder:
-    driver = None
-    url = None
 
     name = 'Иван'
     surname = 'Сидоров'
@@ -17,14 +14,9 @@ class TestCreateOrder:
     rental = 1
     color = 'black'
 
-    @classmethod
-    def setup_class(cls):
-        cls.driver = webdriver.Firefox()
-        cls.url = 'https://qa-scooter.praktikum-services.ru/'
-
-    def test_create_order_button_at_the_top_page(self):
-        order_page = OrderPage(self.driver)
-        self.driver.get(self.url)
+    def test_create_order_button_at_the_top_page(self, setup):
+        order_page = OrderPage(setup)
+        order_page.go_to_site()
         order_page.click_button_order_in_header()
 
         order_page.fill_all_required_fields(self.name, self.surname, self.address, self.metro, self.phone,
@@ -35,9 +27,9 @@ class TestCreateOrder:
         order_number = order_page.get_successful_create_order_message()
         assert order_number is not None
 
-    def test_create_order_button_at_the_buttom_page(self):
-        order_page = OrderPage(self.driver)
-        self.driver.get(self.url)
+    def test_create_order_button_at_the_buttom_page(self, setup):
+        order_page = OrderPage(setup)
+        order_page.go_to_site()
         order_page.click_button_order_at_the_bottom_of_page()
 
         order_page.fill_all_required_fields(self.name, self.surname, self.address, self.metro, self.phone,
@@ -47,7 +39,3 @@ class TestCreateOrder:
 
         order_number = order_page.get_successful_create_order_message()
         assert order_number is not None
-
-    @classmethod
-    def teardown_class(cls):
-        cls.driver.quit()
