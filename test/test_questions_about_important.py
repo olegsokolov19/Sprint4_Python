@@ -1,6 +1,6 @@
 import pytest
 
-from locators import MainPage
+from pages.main_page import MainPage
 
 
 class TestQuestionAboutImportant:
@@ -22,6 +22,7 @@ class TestQuestionAboutImportant:
     @pytest.mark.parametrize('question, answer', questions_and_answers)
     def test_questions(self, setup, question, answer):
         main_page = MainPage(setup)
+
         main_page.go_to_site()
         main_page.click_button_cookie()
         main_page.scroll_into_view_FAQ_elements()

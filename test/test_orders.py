@@ -1,6 +1,6 @@
 import random
 
-from locators import OrderPage
+from pages.order_page import OrderPage
 
 
 class TestCreateOrder:
@@ -30,6 +30,8 @@ class TestCreateOrder:
     def test_create_order_button_at_the_buttom_page(self, setup):
         order_page = OrderPage(setup)
         order_page.go_to_site()
+        order_page.go_to_main_page()
+
         order_page.click_button_order_at_the_bottom_of_page()
 
         order_page.fill_all_required_fields(self.name, self.surname, self.address, self.metro, self.phone,

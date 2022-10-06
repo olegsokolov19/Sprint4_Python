@@ -1,4 +1,4 @@
-from locators import MainPage
+from pages.main_page import MainPage
 
 
 class TestClickButtonOnTheHeaderOfThePage:
