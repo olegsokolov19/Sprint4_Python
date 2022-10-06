@@ -2,7 +2,6 @@ from selenium.webdriver.common.by import By
 
 
 class MainPageLocators:
-    driver = None
 
     LOCATOR_ACCORDION_ELEMENTS = [By.CSS_SELECTOR, "div.accordion__item"]
 
@@ -15,7 +14,6 @@ class MainPageLocators:
 
 
 class OrderPageLocators:
-    driver = None
 
     LOCATOR_BUTTON_ORDER = [By.CSS_SELECTOR, "div.Header_Nav__AGCXC button.Button_Button__ra12g"]
     LOCATOR_BUTTON_ORDER_AT_THE_BOTTOM = [By.CSS_SELECTOR, "div.Home_FinishButton__1_cWm button.Button_Button__ra12g"]
